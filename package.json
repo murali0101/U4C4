@@ -2,14 +2,15 @@
   "name": "u4c4",
   "version": "1.0.0",
   "description": "",
-  "main": "src/sever.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon src/sever.js"
+    "server": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/murali0101/U4C4.git"
+    
   },
   "keywords": [],
   "author": "",
