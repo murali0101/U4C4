@@ -2,9 +2,10 @@
   "name": "u4c4",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/sever.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon src/sever.js"
   },
   "repository": {
     "type": "git",

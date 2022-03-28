@@ -18,25 +18,37 @@ router.get("/", authenticate, async (req, res) => {
     let todo = await Todo.find({ user_id: req.body.user_id }).lean().exec();
     return res.status(200).send(todo);
   } catch (error) {
-    return res.status(401).send(error.message,"Please login");
+    return res.status(401).send(error.message, "Please login");
   }
 });
 router.get("/:id", authenticate, async (req, res) => {
   try {
     req.body.user_id = req.user;
-    let todo = await Todo.find(req.params.id);
+    let todo = await Todo.find(req.params.id).lean().exec();
     return res.status(200).send(todo);
   } catch (error) {
-    return res.status(401).send(error.message,"Please login");
+    return res.status(401).send(error.message, "Please login");
   }
 });
-router.get("/:id", authenticate, async (req, res) => {
+router.post("/:id", authenticate, async (req, res) => {
   try {
     req.body.user_id = req.user;
-    let todo = await Todo.find(req.params.id);
+    let todo = await Todo.create(req.params.id, req.body, { new: true })
+      .lean()
+      .exec();
     return res.status(200).send(todo);
   } catch (error) {
-    return res.status(401).send(error.message,"Please login");
+    return res.status(401).send(error.message, "Please login");
+  }
+});
+router.delete("/:id", authenticate, async (req, res) => {
+  try {
+    req.body.user_id = req.user;
+    let todo = await Todo.findByIdAndDelete(req.params.id);
+
+    return res.status(200).send(todo);
+  } catch (error) {
+    return res.status(401).send(error.message, "Please login");
   }
 });
 
