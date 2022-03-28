@@ -3,7 +3,7 @@ require("dotenv").config();
 const User = require("../models/user.model");
 
 const genToken = (user) => {
-  var token = jwt.sign({ user }, process.env.KEY);
+  return jwt.sign({user}, process.env.KEY);
 };
 
 const register = async (req, res) => {
